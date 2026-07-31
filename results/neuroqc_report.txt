@@ -1,0 +1,58 @@
+
+==============================
+          NeuroQC Report
+==============================
+
+
+DATASET INFORMATION
+------------------------------
+
+Channels:
+376
+
+Sampling frequency:
+600.614990234375 Hz
+
+Recording duration:
+277.71 seconds
+
+
+
+ICA ANALYSIS
+------------------------------
+
+Total components:
+20
+
+Removed components:
+[np.int64(1)]
+
+
+
+ARTIFACT DETECTION
+------------------------------
+
+Artifact type:
+Eye movement (EOG)
+
+Detected component:
+[np.int64(1)]
+
+Maximum correlation:
+0.929
+
+
+
+QUALITY ASSESSMENT
+------------------------------
+
+Quality score:
+7.08 %
+
+Severity:
+HIGH
+
+
+Recommendation:
+ICA cleaning recommended
+

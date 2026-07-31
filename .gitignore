@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+
+mne_data/
+
+.idea/
