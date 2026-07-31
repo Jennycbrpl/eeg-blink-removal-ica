@@ -1,4 +1,5 @@
-# NeuroQC
+# eeg-blink-removal-ica
+
 
 **Automated EEG artifact detection and quality assessment using Independent Component Analysis (ICA).**
 
@@ -10,7 +11,7 @@
 
 **English**
 
-NeuroQC is a Python-based tool designed to analyze EEG recordings and evaluate signal quality by detecting ocular artifacts (EOG) using ICA.
+Python-based tool designed to analyze EEG recordings and evaluate signal quality by detecting ocular artifacts (EOG) using ICA.
 
 The objective is to provide an automated assessment of EEG contamination before further neuroscience analysis.
 
@@ -50,13 +51,13 @@ Estos artefactos pueden afectar la interpretación y análisis de señales EEG.
 
 **English**
 
-NeuroQC applies Independent Component Analysis (ICA) to separate EEG signals into independent components and identify components associated with ocular activity.
+It applies Independent Component Analysis (ICA) to separate EEG signals into independent components and identify components associated with ocular activity.
 
 The system generates an automated quality assessment report describing detected artifacts and their severity.
 
 **Español**
 
-NeuroQC aplica Análisis de Componentes Independientes (ICA) para separar las señales EEG en componentes independientes e identificar aquellos asociados con actividad ocular.
+Se aplica Análisis de Componentes Independientes (ICA) para separar las señales EEG en componentes independientes e identificar aquellos asociados con actividad ocular.
 
 El sistema genera un reporte automatizado de calidad describiendo los artefactos detectados y su nivel de severidad.
 
@@ -144,7 +145,7 @@ Se recomienda limpieza mediante ICA
 ## Project Structure | Estructura del proyecto
 
 ```text
-NeuroQC/
+eeg-blink-removal-ica/
 
 ├── main.py
 
@@ -156,7 +157,7 @@ NeuroQC/
 │   └── visualizer.py
 
 └── results/
-    └── neuroqc_report.txt
+    └── eeg-blink-removal-ica_report.txt
 ```
 
 ---
