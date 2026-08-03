@@ -1,168 +1,83 @@
-# eeg-blink-removal-ica
+# NeuroQC
 
+### Automated EEG Quality Assessment using Independent Component Analysis (ICA)
 
-**Automated EEG artifact detection and quality assessment using Independent Component Analysis (ICA).**
+NeuroQC is a Python-based tool for evaluating EEG signal quality through automatic detection of ocular artifacts (EOG) using Independent Component Analysis (ICA).
 
-**Herramienta automatizada para detección de artefactos EEG y evaluación de calidad de señal mediante Análisis de Componentes Independientes (ICA).**
-
----
-
-## Overview | Descripción general
-
-**English**
-
-Python-based tool designed to analyze EEG recordings and evaluate signal quality by detecting ocular artifacts (EOG) using ICA.
-
-The objective is to provide an automated assessment of EEG contamination before further neuroscience analysis.
-
-**Español**
-
-NeuroQC es una herramienta desarrollada en Python para analizar registros EEG y evaluar la calidad de la señal mediante la detección de artefactos oculares (EOG) utilizando ICA.
-
-El objetivo es proporcionar una evaluación automatizada de la contaminación de la señal EEG antes de realizar análisis neurocientíficos posteriores.
+The project is designed to identify blink-related components, assess signal contamination, and generate an automated quality report before downstream EEG processing or neuroscience research.
 
 ---
 
-## Problem | Problema
+## Overview
 
-**English**
+Electroencephalography (EEG) recordings are commonly contaminated by physiological and environmental artifacts that reduce signal quality and may affect subsequent analyses.
 
-EEG recordings are affected by artifacts that can reduce signal reliability, including:
-
-* Eye movements and blinking (EOG)
-* Muscle activity (EMG)
-* Environmental noise
-
-These artifacts can interfere with EEG interpretation and analysis.
-
-**Español**
-
-Los registros EEG están afectados por artefactos que pueden reducir la confiabilidad de la señal, incluyendo:
-
-* Movimientos oculares y parpadeos (EOG)
-* Actividad muscular (EMG)
-* Ruido ambiental
-
-Estos artefactos pueden afectar la interpretación y análisis de señales EEG.
+NeuroQC focuses on detecting ocular artifacts (EOG) by applying Independent Component Analysis (ICA), allowing researchers to identify contaminated components and evaluate the overall quality of EEG recordings.
 
 ---
 
-## Solution | Solución
+## Key Features
 
-**English**
-
-It applies Independent Component Analysis (ICA) to separate EEG signals into independent components and identify components associated with ocular activity.
-
-The system generates an automated quality assessment report describing detected artifacts and their severity.
-
-**Español**
-
-Se aplica Análisis de Componentes Independientes (ICA) para separar las señales EEG en componentes independientes e identificar aquellos asociados con actividad ocular.
-
-El sistema genera un reporte automatizado de calidad describiendo los artefactos detectados y su nivel de severidad.
+* Load EEG recordings using MNE-Python
+* Perform Independent Component Analysis (ICA)
+* Automatically detect ocular (EOG) artifacts
+* Evaluate EEG signal quality
+* Generate automated quality assessment reports
+* Modular and extensible Python architecture
 
 ---
 
-## Pipeline | Flujo del sistema
+## Processing Pipeline
 
 ```text
-EEG Recording
-      |
-      v
-EEG Loading (MNE-Python)
-      |
-      v
-ICA Decomposition
-      |
-      v
+Raw EEG Recording
+        │
+        ▼
+Load EEG Data (MNE-Python)
+        │
+        ▼
+Preprocessing
+        │
+        ▼
+Independent Component Analysis (ICA)
+        │
+        ▼
 EOG Artifact Detection
-      |
-      v
+        │
+        ▼
 Quality Assessment
-      |
-      v
+        │
+        ▼
 Automated Report Generation
 ```
 
 ---
 
-## Features | Características
-
-* EEG data loading using MNE-Python
-  Carga de datos EEG utilizando MNE-Python
-
-* ICA decomposition for artifact separation
-  Descomposición ICA para separación de artefactos
-
-* Automatic EOG artifact detection
-  Detección automática de artefactos oculares
-
-* EEG quality scoring
-  Cálculo de calidad de señal EEG
-
-* Automated analysis report generation
-  Generación automática de reportes de análisis
-
-* Modular Python architecture
-  Arquitectura modular en Python
-
----
-
-## Example Result | Ejemplo de resultado
-
-```text
-Artifact type:
-Eye movement (EOG)
-
-Tipo de artefacto:
-Movimiento ocular (EOG)
-
-
-ICA Component:
-1
-
-
-Maximum EOG Correlation:
-0.929
-
-
-Severity:
-HIGH
-
-Severidad:
-ALTA
-
-
-Recommendation:
-ICA cleaning recommended
-
-Recomendación:
-Se recomienda limpieza mediante ICA
-```
-
----
-
-## Project Structure | Estructura del proyecto
+## Project Structure
 
 ```text
 eeg-blink-removal-ica/
-
+│
 ├── main.py
-
+│
 ├── src/
 │   ├── loader.py
 │   ├── ica_processor.py
 │   ├── quality_analyzer.py
 │   ├── report_generator.py
 │   └── visualizer.py
-
-└── results/
-    └── eeg-blink-removal-ica_report.txt
+│
+├── results/
+│   └── neuroqc_report.txt
+│
+├── requirements.txt
+│
+└── README.md
 ```
 
 ---
 
-## Technologies | Tecnologías
+## Technologies
 
 * Python
 * MNE-Python
@@ -171,19 +86,24 @@ eeg-blink-removal-ica/
 
 ---
 
-## Installation | Instalación
+## Installation
 
-Install dependencies:
+Clone the repository:
+
+```bash
+git clone https://github.com/Jennycbrpl/eeg-blink-removal-ica.git
+cd eeg-blink-removal-ica
+```
+
+Install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Instala las dependencias:
+---
 
-```bash
-pip install -r requirements.txt
-```
+## Usage
 
 Run the analysis:
 
@@ -191,27 +111,81 @@ Run the analysis:
 python main.py
 ```
 
-Ejecuta el análisis:
+After execution, NeuroQC will:
 
-```bash
-python main.py
+1. Load the EEG recording.
+2. Perform ICA decomposition.
+3. Detect components correlated with ocular activity.
+4. Evaluate signal quality.
+5. Generate an automated quality assessment report.
+
+---
+
+## Example Output
+
+```text
+===============================
+        EEG Quality Report
+===============================
+
+Artifact Type:
+Eye movement (EOG)
+
+Detected ICA Component:
+1
+
+Maximum EOG Correlation:
+0.929
+
+Quality Score:
+7.08%
+
+Severity:
+HIGH
+
+Recommendation:
+ICA cleaning recommended
 ```
 
 ---
 
-## Future Improvements | Mejoras futuras
+## Example Results
 
-* Detection of additional artifacts such as EMG and ECG
-  Detección de artefactos adicionales como EMG y ECG
+| Metric              |                    Value |
+| ------------------- | -----------------------: |
+| Artifact Type       |       Eye Movement (EOG) |
+| ICA Component       |                        1 |
+| Maximum Correlation |                    0.929 |
+| Quality Score       |                    7.08% |
+| Severity            |                     HIGH |
+| Recommendation      | ICA cleaning recommended |
 
-* More EEG quality metrics
-  Más métricas de calidad EEG
+---
 
-* Automated visualization reports
-  Reportes visuales automatizados
+## Future Improvements
 
-* Support for additional EEG datasets
-  Soporte para más datasets EEG
+* Detection of EMG artifacts
+* Detection of ECG artifacts
+* Additional EEG quality metrics
+* Interactive visualization dashboard
+* PDF report generation
+* Support for multiple EEG datasets
+* Machine learning-based artifact classification
+
+---
+
+## Contributing
+
+Contributions are welcome.
+
+If you would like to improve NeuroQC, feel free to fork the repository, create a feature branch, and submit a pull request.
+
+---
+
+## License
+
+This project is released under the MIT License.
+
 
 ---
 
